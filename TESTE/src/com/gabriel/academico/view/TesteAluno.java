@@ -1,6 +1,6 @@
-package TESTE.src.com.gabriel.aula3.view;
+package com.gabriel.academico.view;
 
-import TESTE.src.com.gabriel.aula3.model.Aluno;
+import com.gabriel.academico.model.Aluno;
 
 public class TesteAluno {
     public static void main(String[] args){

@@ -1,4 +1,4 @@
-package TESTE.src.com.gabriel.aula3.model;
+package com.gabriel.academico.model;
 
 public class Aluno {
     public String nome;

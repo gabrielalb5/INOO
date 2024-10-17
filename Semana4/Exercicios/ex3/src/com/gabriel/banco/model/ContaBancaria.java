@@ -1,8 +1,8 @@
 package com.gabriel.banco.model;
 
 public class ContaBancaria {
-    String numeroConta;
-    double saldo;
+    private String numeroConta;
+    private double saldo;
 
     public ContaBancaria(String numeroConta, double saldo){
         this.numeroConta = numeroConta;

@@ -2,7 +2,7 @@ package com.gabriel.livraria.view;
 
 import com.gabriel.livraria.model.Livro;
 
-public class Livraria {
+public class Livraria2 {
     public static void main(String[] args) {
         Livro l1 = new Livro("Os Sete Maridos de Evelyn Hugo","Taylor Jenkins Reid",30);
         Livro l2 = new Livro("Quinze Dias","Vitor Martins",20);

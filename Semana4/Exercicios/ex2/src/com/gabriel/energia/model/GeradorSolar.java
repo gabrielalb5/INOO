@@ -1,8 +1,8 @@
 package com.gabriel.energia.model;
 
 public class GeradorSolar {
-    double potenciaMaxima;
-    double energiaGerada;
+    private double potenciaMaxima;
+    private double energiaGerada;
 
     public GeradorSolar(double potenciaMaxima, double energiaGerada){
         this.potenciaMaxima = potenciaMaxima;

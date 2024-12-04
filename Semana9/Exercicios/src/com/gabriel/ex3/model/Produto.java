@@ -2,18 +2,18 @@ package com.gabriel.ex3.model;
 
 public class Produto {
     private String descricao;
-    private double produto;
+    private double preco;
 
-    public Produto(String descricao, double produto){
+    public Produto(String descricao, double preco){
         this.descricao = descricao;
-        this.produto = produto;
+        this.preco = preco;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public double getProduto() {
-        return produto;
+    public double getPreco() {
+        return preco;
     }
 }

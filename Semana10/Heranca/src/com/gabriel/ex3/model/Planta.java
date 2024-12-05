@@ -1,8 +1,8 @@
 package com.gabriel.ex3.model;
 
 public class Planta {
-    private String nomeCientifico;
-    private double altura;
+    protected String nomeCientifico;
+    protected double altura;
 
     public Planta(String nomeCientifico, double altura){
         this.nomeCientifico = nomeCientifico;

@@ -7,6 +7,6 @@ public class ContaCorrente extends Conta{
     }
     
     public double corrigir(){
-        return getSaldo();
+        return getSaldo() * 1.1;
     }
 }

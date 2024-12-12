@@ -18,6 +18,6 @@ public class Conta {
     }
 
     public double corrigir(){
-        return getSaldo();
+        return getSaldo() * 1.05;
     }
 }

@@ -1,8 +1,8 @@
-package com.gabriel.model;
+package com.clinica.model;
 
 import java.util.ArrayList;
 
-import com.gabriel.model.colaboradores.Colaborador;
+import com.clinica.model.colaboradores.Colaborador;
 
 public class Login {
     private ArrayList<Tutor> tutores;

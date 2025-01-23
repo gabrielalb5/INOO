@@ -1,6 +1,6 @@
-package com.gabriel.model.animais;
+package com.clinica.model.animais;
 
-import com.gabriel.model.Tutor;
+import com.clinica.model.Tutor;
 
 public abstract class Animal implements ICaracteristicas {
     protected int id;

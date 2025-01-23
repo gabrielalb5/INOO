@@ -1,4 +1,4 @@
-package com.gabriel.model;
+package com.clinica.model;
 
 public class Tutor {
     private String nome;

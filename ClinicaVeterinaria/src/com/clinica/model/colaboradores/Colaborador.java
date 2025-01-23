@@ -1,4 +1,4 @@
-package com.gabriel.model.colaboradores;
+package com.clinica.model.colaboradores;
 
 public abstract class Colaborador {
     protected String nome;

@@ -1,4 +1,4 @@
-package com.gabriel.model.colaboradores;
+package com.clinica.model.colaboradores;
 
 public class Veterinario extends Colaborador{
     

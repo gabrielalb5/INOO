@@ -6,6 +6,7 @@ import com.clinica.model.Tutor;
 import com.clinica.model.animais.Animal;
 import com.clinica.model.colaboradores.Colaborador;
 import com.clinica.model.colaboradores.Groomer;
+import com.clinica.model.colaboradores.Veterinario;
 import com.clinica.view.Menu;
 
 public class Main {
@@ -16,9 +17,11 @@ public class Main {
 
         Menu menu = new Menu(tutores, animais, colaboradores);
 
-        Colaborador c1 = new Groomer("Gabriel", "450", "1234");
-        colaboradores.add(c1);
+        Colaborador g1 = new Groomer("Gabriel", "450", "1234");
+        Colaborador v1 = new Veterinario("Caio", "400", "1234");
+        colaboradores.add(g1);
+        colaboradores.add(v1);
 
-        menu.menuInicial();
+        menu.menuInicial(colaboradores);
     }
 }

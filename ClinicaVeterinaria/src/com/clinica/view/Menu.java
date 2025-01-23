@@ -8,6 +8,9 @@ import com.clinica.model.Login;
 import com.clinica.model.Tutor;
 import com.clinica.model.animais.Animal;
 import com.clinica.model.colaboradores.Colaborador;
+import com.clinica.model.colaboradores.Groomer;
+import com.clinica.model.colaboradores.Veterinario;
+
 
 public class Menu {
     // ArrayList<Tutor> tutores;
@@ -26,7 +29,13 @@ public class Menu {
         this.leitura = new Scanner(System.in);
     }
 
-    public void menuInicial(){
+    private static void clearBuffer(Scanner scanner) {
+        if (scanner.hasNextLine()) {
+            scanner.nextLine();
+        }
+    }
+
+    public void menuInicial(ArrayList<Colaborador> colaboradores){
         int opcao;
         do{
             System.out.println("__________________________________");
@@ -48,7 +57,7 @@ public class Menu {
                     menuTutor();
                     break;
                 case 2:
-                    menuColaborador();
+                    menuColaborador(colaboradores);
                     break;
                 case 0:
                     System.out.println("Saindo...");;
@@ -129,13 +138,7 @@ public class Menu {
         return t;
     }
 
-    private static void clearBuffer(Scanner scanner) {
-        if (scanner.hasNextLine()) {
-            scanner.nextLine();
-        }
-    }
-
-    public void menuColaborador(){
+    public void menuColaborador(ArrayList<Colaborador> colaboradores){
         System.out.println("\nLOGIN DE COLABORADOR");
         clearBuffer(leitura);
         System.out.print("CPF: ");
@@ -146,36 +149,43 @@ public class Menu {
         
         if(saida){
             System.out.println("Login realizado com sucesso!");
-
-            int opcao;
-            do{
-                System.out.println("________________________");
-                System.out.println("|                       |");
-                System.out.println("| > Qual sua função?    |");
-                System.out.println("|                       |");
-                System.out.println("| 1. Gromer             |");
-                System.out.println("| 2. Veterinário        |");
-                System.out.println("| 0. Voltar             |");
-                System.out.println("|_______________________|");
-                System.out.print("\n> Escolha uma opção: ");
-
-                opcao = leitura.nextInt();
-
-                switch (opcao) {
-                    case 1:
-                        System.out.println("Menu de groomer");
-                        break;
-                    case 2:
-                        System.out.println("Menu de veterinário");
-                        break;
-                    default:
-                        System.out.println("Opção inválida");
-                        break;
+            for(Colaborador colaborador : colaboradores){
+                if(colaborador.getCpf().equals(cpf)){
+                    if (colaborador instanceof Groomer) {
+                        menuGroomer((Groomer) colaborador);
+                    } else if (colaborador instanceof Veterinario) {
+                        menuVeterinario((Veterinario) colaborador);
+                    }
                 }
-            }while(opcao != 0);
+            }
         }else{
             System.out.println("Credenciais inválidas");
         }
     }
 
+    public void menuGroomer(Groomer groomer){
+        System.out.println("Olá, "+groomer.getNome());
+        System.out.println("__________________________________");
+        System.out.println("|                                 |");
+        System.out.println("| > Groomer                       |");
+        System.out.println("|                                 |");
+        System.out.println("| 1. Ver pets para banho ou tosa  |");
+        System.out.println("| 2. Atender próximo pet          |");
+        System.out.println("| 3. Ver meu perfil               |");
+        System.out.println("| 0. Sair                         |");
+        System.out.println("|_________________________________|");
+    }
+
+    public void menuVeterinario(Veterinario veterinario){
+        System.out.println("Olá, "+veterinario.getNome());
+        System.out.println("__________________________________");
+        System.out.println("|                                 |");
+        System.out.println("| > Veterinário                   |");
+        System.out.println("|                                 |");
+        System.out.println("| 1. Ver lista de espera          |");
+        System.out.println("| 2. Tratar próximo pet           |");
+        System.out.println("| 3. Ver meu perfil               |");
+        System.out.println("| 0. Sair                         |");
+        System.out.println("|_________________________________|");
+    }
 }

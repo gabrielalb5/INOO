@@ -41,7 +41,7 @@ public class Menu {
         }
     }
 
-    public void menuInicial(ArrayList<Tutor> tutores, ArrayList<Colaborador> colaboradores){
+    public void menuInicial(ArrayList<Tutor> tutores, ArrayList<Colaborador> colaboradores, ArrayList<Animal> animais){
         int opcao;
         do{
             System.out.println("__________________________________");
@@ -60,7 +60,7 @@ public class Menu {
 
             switch (opcao){
                 case 1:
-                    menuTutor(tutores);
+                    menuTutor(tutores, animais);
                     break;
                 case 2:
                     menuColaborador(colaboradores);
@@ -76,7 +76,7 @@ public class Menu {
     }
 
     //TUTOR
-    public void menuTutor(ArrayList<Tutor> tutores){
+    public void menuTutor(ArrayList<Tutor> tutores, ArrayList<Animal> animais){
         int opcao;
         do{
             System.out.println("________________________");
@@ -127,6 +127,7 @@ public class Menu {
                         for(Tutor tutor : tutores){
                             if(tutor.getCpf().equals(cpf)){
                                 System.out.println("Olá, "+tutor.getNome());
+                                exibirAnimaisComTutor(tutor, animais);
                                 //menuTutorLogado();
                             }
                         }
@@ -264,4 +265,15 @@ public class Menu {
         return a;
     }
 
+    private void exibirAnimaisComTutor(Tutor tutor, ArrayList<Animal> animais){
+        if(animais.isEmpty()){
+            System.out.println("Você não possui animais cadastrados");
+        }else{
+            for(Animal pet : animais){
+                if(pet.getTutor().equals(tutor)){
+                    System.out.println(pet.getNome());
+                }
+            }
+        }
+    }
 }

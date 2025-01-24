@@ -22,6 +22,6 @@ public class Main {
         colaboradores.add(g1);
         colaboradores.add(v1);
 
-        menu.menuInicial(colaboradores);
+        menu.menuInicial(tutores, colaboradores);
     }
 }

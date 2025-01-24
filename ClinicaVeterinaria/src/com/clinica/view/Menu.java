@@ -7,6 +7,12 @@ import com.clinica.model.Cadastro;
 import com.clinica.model.Login;
 import com.clinica.model.Tutor;
 import com.clinica.model.animais.Animal;
+import com.clinica.model.animais.Cachorro;
+import com.clinica.model.animais.Coelho;
+import com.clinica.model.animais.Gato;
+import com.clinica.model.animais.Jabuti;
+import com.clinica.model.animais.Passaro;
+
 import com.clinica.model.colaboradores.Colaborador;
 import com.clinica.model.colaboradores.Groomer;
 import com.clinica.model.colaboradores.Veterinario;
@@ -35,7 +41,7 @@ public class Menu {
         }
     }
 
-    public void menuInicial(ArrayList<Colaborador> colaboradores){
+    public void menuInicial(ArrayList<Tutor> tutores, ArrayList<Colaborador> colaboradores){
         int opcao;
         do{
             System.out.println("__________________________________");
@@ -54,7 +60,7 @@ public class Menu {
 
             switch (opcao){
                 case 1:
-                    menuTutor();
+                    menuTutor(tutores);
                     break;
                 case 2:
                     menuColaborador(colaboradores);
@@ -69,7 +75,8 @@ public class Menu {
         }while (opcao!=0);
     }
 
-    public void menuTutor(){
+    //TUTOR
+    public void menuTutor(ArrayList<Tutor> tutores){
         int opcao;
         do{
             System.out.println("________________________");
@@ -90,6 +97,22 @@ public class Menu {
                     Tutor novoTutor = lerTutor();
                     cadastro.cadastrarTutor(novoTutor);
                     System.out.println("Tutor cadastrado com sucesso!");
+                    do{
+                        System.out.print("Deseja cadastrar um pet agora? (1 - Sim | 0 - Não): ");
+                        opcao = leitura.nextInt();
+                        switch (opcao) {
+                            case 1:
+                                Animal novoAnimal = lerAnimalComTutor(novoTutor);
+                                cadastro.cadastrarAnimal(novoAnimal);
+                                System.out.println("Pet cadastrado com sucesso!");
+                            case 0:
+                                System.out.println("Cadastro finalizado! Faça o login no menu inicial");
+                                break;
+                            default:
+                                System.out.println("Opção inválida");
+                                break;
+                        }
+                    }while(opcao<0 || opcao>1);
                     break;
                 case 2:
                     System.out.println("\nLOGIN DE TUTOR");
@@ -101,7 +124,12 @@ public class Menu {
                     boolean saida = login.autenticar(cpf, senha, "TUTOR");
                     if(saida){
                         System.out.println("Login realizado com sucesso!");
-                        //Exibir menu de quando estiver logado
+                        for(Tutor tutor : tutores){
+                            if(tutor.getCpf().equals(cpf)){
+                                System.out.println("Olá, "+tutor.getNome());
+                                //menuTutorLogado();
+                            }
+                        }
                     }else{
                         System.out.println("Credenciais inválidas");
                     }
@@ -138,6 +166,7 @@ public class Menu {
         return t;
     }
 
+    //COLABORADOR
     public void menuColaborador(ArrayList<Colaborador> colaboradores){
         System.out.println("\nLOGIN DE COLABORADOR");
         clearBuffer(leitura);
@@ -188,4 +217,51 @@ public class Menu {
         System.out.println("| 0. Sair                         |");
         System.out.println("|_________________________________|");
     }
+
+    //ANIMAL
+    private Animal lerAnimalComTutor(Tutor tutor){
+        clearBuffer(leitura);
+        System.out.println("\nCADASTRO DE PET");
+        System.out.print("Nome: ");
+        String nome = leitura.nextLine();
+        System.out.print("Idade: ");
+        int idade = leitura.nextInt();
+
+        int especie;
+        Animal a = null;
+        do{
+            System.out.println("\nESPÉCIES ATENDIDAS");
+            System.out.println("1. Cachorro");
+            System.out.println("2. Coelho");
+            System.out.println("3. Gato");
+            System.out.println("4. Jabuti");
+            System.out.println("5. Pássaro");
+            System.out.println("5. Pássaro");
+            System.out.println("Indique a espécie (1-5): ");
+            especie = leitura.nextInt();
+
+            switch (especie) {
+                case 1:
+                    a = new Cachorro(nome, idade, tutor);
+                    break;
+                case 2:
+                    a = new Coelho(nome, idade, tutor);
+                    break;
+                case 3:
+                    a = new Gato(nome, idade, tutor);
+                    break;
+                case 4:
+                    a = new Jabuti(nome, idade, tutor);
+                    break;
+                case 5:                    
+                    a = new Passaro(nome, idade, tutor);
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
+            }
+        }while(especie>5 || especie<1);
+        return a;
+    }
+
 }

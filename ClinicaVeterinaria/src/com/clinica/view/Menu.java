@@ -160,8 +160,8 @@ public class Menu {
         return t;
     }
 
-    public void listarTutores(ArrayList<Tutor> tutores, ArrayList<Animal> animais){
-        System.out.print("\n| TUTORES");
+    private void listarTutores(ArrayList<Tutor> tutores, ArrayList<Animal> animais){
+        System.out.print("\n> TUTORES");
         for(Tutor t : tutores){
             System.out.println("\n"+t.getNome()+" - "+t.getEmail());
             exibirAnimaisDoTutor(t, animais);
@@ -278,6 +278,18 @@ public class Menu {
         }
     }
 
+    private void exibirAnimaisAdocao(ArrayList<Animal> animais){
+        if(animais.isEmpty()){
+            System.out.println("Não há animais cadatsrados");
+        }else{
+            for(Animal pet : animais){
+                if(pet.getTutor().equals(null)){
+                    System.out.println(pet.getNome());
+                }
+            }
+        }
+    }
+
     private Animal lerAnimalAdocao(){
         clearBuffer(leitura);
         System.out.println("\nCADASTRO DE PET");
@@ -356,6 +368,8 @@ public class Menu {
                 case 3:
                     System.out.println("\n----- TODOS OS CADASTROS DO SISTEMA -----");
                     listarTutores(tutores, animais);
+                    System.out.println("\n> ANIMAIS PARA ADOÇÃO");
+                    exibirAnimaisAdocao(animais);
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");

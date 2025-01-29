@@ -3,10 +3,8 @@ package com.clinica;
 import java.util.ArrayList;
 
 import com.clinica.model.Tutor;
-import com.clinica.model.animais.Animal;
-import com.clinica.model.colaboradores.Colaborador;
-import com.clinica.model.colaboradores.Groomer;
-import com.clinica.model.colaboradores.Veterinario;
+import com.clinica.model.animais.*;
+import com.clinica.model.colaboradores.*;
 import com.clinica.view.Menu;
 
 public class Main {

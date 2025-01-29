@@ -56,7 +56,7 @@ public class Menu {
                     menuColaborador(colaboradores);
                     break;
                 case 1357:
-                    menuAdmin();
+                    menuAdmin(tutores, colaboradores, animais);
                     break;
                 case 0:
                     System.out.println("O sistema será encerrado. Obrigado por utilizar!");;
@@ -160,6 +160,14 @@ public class Menu {
         return t;
     }
 
+    public void listarTutores(ArrayList<Tutor> tutores, ArrayList<Animal> animais){
+        System.out.print("\n| TUTORES");
+        for(Tutor t : tutores){
+            System.out.println("\n"+t.getNome()+" - "+t.getEmail());
+            exibirAnimaisDoTutor(t, animais);
+        }
+    }
+
     //COLABORADOR
     public void menuColaborador(ArrayList<Colaborador> colaboradores){
         System.out.println("\nLOGIN DE COLABORADOR");
@@ -260,7 +268,7 @@ public class Menu {
 
     private void exibirAnimaisDoTutor(Tutor tutor, ArrayList<Animal> animais){
         if(animais.isEmpty()){
-            System.out.println("Você não possui animais cadastrados");
+            System.out.println("Não há animais cadastrados");
         }else{
             for(Animal pet : animais){
                 if(pet.getTutor().equals(tutor)){
@@ -316,7 +324,7 @@ public class Menu {
     }
 
     //ADMINISTRADOR
-    public void menuAdmin(){
+    public void menuAdmin(ArrayList<Tutor> tutores, ArrayList<Colaborador> colaboradores, ArrayList<Animal> animais){
         int opcao;
         do{
             System.out.println("__________________________________");
@@ -344,8 +352,11 @@ public class Menu {
                     Animal novoAnimal = lerAnimalAdocao();
                     cadastro.cadastrarAnimal(novoAnimal);
                     System.out.println("Pet para adoção cadastrado com sucesso!");
+                    break;
                 case 3:
-                    
+                    System.out.println("\n----- TODOS OS CADASTROS DO SISTEMA -----");
+                    listarTutores(tutores, animais);
+                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
                     break;

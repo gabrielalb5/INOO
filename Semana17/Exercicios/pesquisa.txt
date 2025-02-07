@@ -1,0 +1,12 @@
+1. Não há limitações em relação a nomeação de Interfaces em Java.
+A convenção principal é a preferência por substantivos, nome bem definido que indique a responsabilidade
+daquele contrato e a formatação, que deve ser PascalCase, ou seja, cada letra da primeira palavra com letra maiúscula.
+https://www.devmedia.com.br/convencoes-de-codigo-java/23871
+https://cursos.alura.com.br/forum/topico-verbos-ou-substantivos-em-interfaces-68578
+
+2. A herança permite que uma classe herde atributos e métodos de outra, a classe pai pode ter um método implementado,
+ou só sua assinatura, e seu filho recebe-o. Já a interface define métodos que uma classe deve implementar, sem fornecer a implementação,
+criando uma relação "pode fazer" e permitindo maior flexibilidade. Enquanto a herança compartilha código entre classes semelhantes,
+a interface padroniza comportamentos em classes distintas. Elas podem ser utilizadas em conjunto, inclusive evitando que classes pais
+necessitem criar assinaturas de métodos que só serão utilizadas nas filhas, por exemplo.
+https://cursos.alura.com.br/forum/topico-interface-vs-heranca-usar-interface-e-melhor-do-que-sobrescrever-metodos-por-heranca-36429
